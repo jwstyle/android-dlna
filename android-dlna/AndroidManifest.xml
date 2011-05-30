@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+      package="dlna.player"
+      android:versionCode="1"
+      android:versionName="1.0">
+    <application android:icon="@drawable/icon" android:label="@string/app_name">
+        <activity android:name=".activities.MainActivity"
+                  android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+		<activity android:name=".activities.NetworkActivity" android:label="@string/network"></activity>
+		<activity android:name=".activities.ContentActivity" android:label="@string/content"></activity>
+		<activity android:name=".activities.PlaylistActivity" android:label="@string/settings"></activity>
+		<activity android:name=".activities.AudioPlayerActivity" android:label="@string/audioplayer"></activity>
+		<activity android:name=".activities.PictureViewerActivity" android:label="@string/pictureviewer"></activity>
+		
+		<service android:name=".services.DlnaService" android:enabled="true">
+			<intent-filter>
+                <action android:name="dlna.player.SEARCH_DEVICES" />
+                <action android:name="dlna.player.GET_ITEM_LIST" />
+                <action android:name="dlna.player.BIND_SERVICE" />
+                <action android:name="dlna.player.RESET_STACK" />
+            </intent-filter>
+		</service>
+		
+		<service android:name=".services.MediaPlayerService" android:enabled="true">
+			<intent-filter>
+                <action android:name="dlna.player.START_PLAYBACK" />
+                <action android:name="dlna.player.STOP_PLAYBACK" />
+            </intent-filter>
+		</service>
+		
+    </application>
+    
+    <uses-sdk android:minSdkVersion="7" />
+    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
+
+</manifest> 
